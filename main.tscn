@@ -53,7 +53,7 @@ use_collision = true
 height = 3.4399414
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGPolygon3D" unique_id=998484555]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.694558, 0.4838934, 1.5023987)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.789066, 0.4838934, 4.0922756)
 use_collision = true
 polygon = PackedVector2Array(-0.3782072, -0.5869967, 0.1983223, 1.6279981, 0.71094894, 1.6056774, 1.4162501, -0.60421443)
 
