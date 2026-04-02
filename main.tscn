@@ -30,7 +30,7 @@ use_collision = true
 size = Vector3(11.597656, 0.22998047, 4.205246)
 
 [node name="wall" type="CSGBox3D" parent="." unique_id=2107876045]
-transform = Transform3D(1, 0, 0, 0, 1.0993419, 0, 0, 0, 1, 0.1595459, 1.4033068, -3.366211)
+transform = Transform3D(1, 0, 0, 0, 1.0993419, 0, 0, 0, 1, -0.938735, 1.4033068, -3.366211)
 use_collision = true
 size = Vector3(3.1018066, 3.4267578, 0.26757813)
 
