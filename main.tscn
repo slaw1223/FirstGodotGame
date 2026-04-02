@@ -56,5 +56,11 @@ size = Vector3(1, 1, 7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4350677, 5.4437866, -3.3732862)
 size = Vector3(1, 11.887573, 1)
 
+<<<<<<< HEAD
 [node name="Szymon" type="CSGBox3D" parent="." unique_id=1200029608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4350677, 5.4437866, 15.729979)
+=======
+[node name="awdawdwadaw" type="CSGBox3D" parent="." unique_id=1386881899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4887695, 4.7604637, 7.0390015)
+size = Vector3(24.47168, 0.9099121, 15.078003)
+>>>>>>> 0e9fe73ef397f97cc7edfdf9ae42097f17679284
