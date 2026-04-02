@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c65ni20ed485i"]
 
+<<<<<<< HEAD
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,3 +18,6 @@ glow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=178271576]
 environment = SubResource("Environment_0xm2m")
+=======
+[node name="Main" type="Node3D" unique_id=2055197838]
+>>>>>>> 50bbbb9fd4f80ea418b09a3f209c570649f29b29
