@@ -17,10 +17,14 @@ extends CharacterBody3D
 @export var can_freefly : bool = false
 
 @export_group("Speeds")
+## Look around rotation speed.
+@export var look_speed : float = 0.002
 ## Normal speed.
-@export var base_speed : float = 5.0
+@export var base_speed : float = 7.0
+## Speed of jump.
+@export var jump_velocity : float = 4.5
 ## How fast do we run?
-@export var sprint_speed : float = 20.0
+@export var sprint_speed : float = 10.0
 ## How fast do we freefly?
 @export var freefly_speed : float = 25.0
 
@@ -41,17 +45,18 @@ extends CharacterBody3D
 @export var input_freefly : String = "freefly"
 
 var mouse_captured : bool = false
-
+var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 
 ## IMPORTANT REFERENCES
-
+@onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 
 func _ready() -> void:
 	check_input_mappings()
-
+	look_rotation.y = rotation.y
+	look_rotation.x = head.rotation.x
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -61,7 +66,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		release_mouse()
 	
 	# Look around
-
+	if mouse_captured and event is InputEventMouseMotion:
+		rotate_look(event.relative)
 	
 	# Toggle freefly mode
 	if can_freefly and Input.is_action_just_pressed(input_freefly):
@@ -74,7 +80,9 @@ func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
-	
+		var motion := (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		motion *= freefly_speed * delta
+		move_and_collide(motion)
 		return
 	
 	# Apply gravity to velocity
@@ -82,6 +90,10 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
+	# Apply jumping
+	if can_jump:
+		if Input.is_action_just_pressed(input_jump) and is_on_floor():
+			velocity.y = jump_velocity
 
 	# Modify speed based on sprinting
 	if can_sprint and Input.is_action_pressed(input_sprint):
@@ -111,9 +123,13 @@ func _physics_process(delta: float) -> void:
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):
-	
+	look_rotation.x -= rot_input.y * look_speed
+	look_rotation.x = clamp(look_rotation.x, deg_to_rad(-85), deg_to_rad(85))
+	look_rotation.y -= rot_input.x * look_speed
 	transform.basis = Basis()
-	
+	rotate_y(look_rotation.y)
+	head.transform.basis = Basis()
+	head.rotate_x(look_rotation.x)
 
 
 func enable_freefly():
