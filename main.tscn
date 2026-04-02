@@ -95,5 +95,5 @@ use_collision = true
 size = Vector3(13.1857605, 1.1137695, 0.34960938)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=653895591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 120.15421, 7.13434)
-size = Vector3(1, 241.30843, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2253.1758, 7.13434)
+size = Vector3(1, 4507.3516, 1)
